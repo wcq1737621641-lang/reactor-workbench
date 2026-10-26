@@ -22,6 +22,8 @@ export function createServer() {
       if (origin && origin !== `http://${req.headers.host}`)
         return reply(403, { error: '只接受本机页面请求。' });
       const url = new URL(req.url, 'http://localhost');
+      if (req.method === 'GET' && url.pathname === '/api/version')
+        return reply(200, { app: 'reactor-workbench', version: '0.1.0', hysysAdapter: 'pending' });
       if (req.method === 'GET' && url.pathname === '/api/health')
         return reply(200, {
           hysys: await doctor(),

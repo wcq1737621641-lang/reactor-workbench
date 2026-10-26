@@ -1,29 +1,31 @@
-✔ reformer chooses equilibrium and preserves both independent temperature cases (12.4681ms)
-✔ toluene mass and atom balance, conversion and isomer split (2.8904ms)
-✔ toluene requires isomer selectivity even with known total conversion (3.0991ms)
-✔ new hydrogenation reaction solves from generic JSON without scenario routing (2.9907ms)
-✔ equilibrium ammonia and Gibbs combustion choose different reactor models (4.1941ms)
-✔ missing parameters and unsupported free text require clarification (0.2601ms)
-✔ unbalanced reaction is blocked (0.2871ms)
-✔ negative or nonsumming mole fractions are blocked (0.347ms)
-✔ pressure must be absolute, positive, and not rise inside a passive reactor (0.5725ms)
-✔ invalid conversion and missing base reactant are blocked (1.7148ms)
-✔ limiting reagent violation is reported rather than clamped to fake results (0.4911ms)
-✔ parallel conversion fractions cannot exceed one (0.3426ms)
-✔ kinetics select liquid CSTR or gas PFR but explicitly require an adapter (0.5246ms)
-✔ do not infer equilibrium merely because conversion is missing (0.3518ms)
-✔ formula parsing rejects malformed formula and ambiguous xylene (0.3552ms)
-✔ NaN, null and duplicate components cannot become ready (0.5287ms)
-✔ a fake or incomplete HYSYS result is rejected (0.8606ms)
-✔ HYSYS output mass and composition validation (1.376ms)
-✔ language model output still passes deterministic validation (0.6476ms)
-✔ model HTTP errors do not expose credentials or response text (0.3108ms)
-✔ local HTTP flow, stale plans, missing assumptions, and source labels (5475.6ms)
-ℹ tests 21
+✔ launcher starts and recognizes an existing workbench without opening extra servers (466.148ms)
+✔ launcher rejects invalid port with a useful error (135.6139ms)
+✔ reformer chooses equilibrium and preserves both independent temperature cases (19.7631ms)
+✔ toluene mass and atom balance, conversion and isomer split (3.9433ms)
+✔ toluene requires isomer selectivity even with known total conversion (2.3332ms)
+✔ new hydrogenation reaction solves from generic JSON without scenario routing (4.505ms)
+✔ equilibrium ammonia and Gibbs combustion choose different reactor models (8.1154ms)
+✔ missing parameters and unsupported free text require clarification (0.9896ms)
+✔ unbalanced reaction is blocked (0.6282ms)
+✔ negative or nonsumming mole fractions are blocked (0.8807ms)
+✔ pressure must be absolute, positive, and not rise inside a passive reactor (1.3516ms)
+✔ invalid conversion and missing base reactant are blocked (2.6124ms)
+✔ limiting reagent violation is reported rather than clamped to fake results (0.5367ms)
+✔ parallel conversion fractions cannot exceed one (0.3416ms)
+✔ kinetics select liquid CSTR or gas PFR but explicitly require an adapter (0.5192ms)
+✔ do not infer equilibrium merely because conversion is missing (0.3284ms)
+✔ formula parsing rejects malformed formula and ambiguous xylene (0.3573ms)
+✔ NaN, null and duplicate components cannot become ready (0.51ms)
+✔ a fake or incomplete HYSYS result is rejected (0.8065ms)
+✔ HYSYS output mass and composition validation (1.5283ms)
+✔ language model output still passes deterministic validation (0.6374ms)
+✔ model HTTP errors do not expose credentials or response text (0.4423ms)
+✔ local HTTP flow, stale plans, missing assumptions, and source labels (6537.5782ms)
+ℹ tests 23
 ℹ suites 0
-ℹ pass 21
+ℹ pass 23
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 5686.8248
+ℹ duration_ms 6792.9704

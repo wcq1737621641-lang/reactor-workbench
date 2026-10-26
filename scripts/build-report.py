@@ -85,7 +85,7 @@ paragraph("甲苯示例的独立校核：未反应甲苯 5000 kg/h；总出口�
 heading("真实结果的验收约束")
 paragraph("宿主为每次任务保存输入快照、日志、结果/失败记录和 .hsc。适配器必须按 HYSYS 实际组分顺序设置组成；温压和流量均显式带单位；等温连接能量流，不以 Solver 停止作为收敛证明。输出必须读取气/液两股物流与反应器状态，进行组成和元素衡算检查。失败时返回原因，不生成替代结果。")
 heading("交付与下一阶段")
-paragraph("本地代码、README、示例、测试、两页报告和脱敏真实公开对话导出可交付。HYSYS 实机反应创建适配器尚未实现，两个必测及额外反应的真实求解、全流程录屏和 Live Demo 均待完成。GitHub 凭证目前无效，远程仓库发布待重新授权；不能把本地仓库等同于已发布 GitHub 仓库。")
+paragraph("本地代码、README、示例、测试、两页报告和脱敏真实公开对话导出可交付。HYSYS 实机反应创建适配器尚未实现，两个必测及额外反应的真实求解、全流程录屏和 Live Demo 均待完成。后续用户要求封装并由其自行部署：已增加一键启动与运行时准备；GitHub 仓库与 Windows 发布包状态以仓库 Releases 页面为准。")
 paragraph("联调顺序：导出 V15 COM 接口 → 实现通用适配器 → 回读反应/类型/热条件 → 实算重整两工况和甲苯歧化 → 额外反应与失败工况 → 保存证据 → 更新报告并录制演示。只有全部实测通过后才能声称完成考核闭环。")
 heading("参考与 AI 协作证据")
 paragraph("AspenTech：Automation and Extensibility，Article 000066742；V15 Unit Operations Guide，Article 000103491。OpenAI 官方 Structured model outputs 文档：JSON mode 不保证业务 schema，需独立校验。完整链接见 README。开发公开消息原始导出见 docs/AI-SESSION.md；敏感凭证及远程地址已脱敏，未复制第三方项目仓库。", st=small)

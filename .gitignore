@@ -10,3 +10,5 @@ rdp-*.png
 remote-screen.png
 tmp/
 .cache/
+.runtime/
+dist/

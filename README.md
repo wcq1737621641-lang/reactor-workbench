@@ -6,7 +6,11 @@
 
 ## 立即运行
 
-需要 Node.js 22+（建议使用本次验证版本 24），Windows 自带 PowerShell 5.1 即可执行探测脚本。项目运行时没有 npm 第三方依赖。
+**Windows 用户推荐下载 [Release 发布包](https://github.com/wcq1737621641-lang/reactor-workbench/releases)，完整解压后双击 `start.cmd`。发布包内置 Node.js，不需要额外安装运行环境。**
+
+也可 `git clone https://github.com/wcq1737621641-lang/reactor-workbench.git` 后双击 `start.cmd`；启动器会优先使用已有 Node.js 22.9+，否则自动下载并校验官方 Node.js 24 LTS。启动后自动打开浏览器。完整步骤见 [DEPLOY.md](DEPLOY.md)。
+
+手动运行需要 Node.js 22.9+（本次验证版本 24），Windows 自带 PowerShell 5.1 即可执行探测脚本。项目运行时没有 npm 第三方依赖。
 
 ```powershell
 cd D:\kuyuan
@@ -101,7 +105,7 @@ flowchart LR
 | 两个必测场景真实求解及 Live Demo | **待完成** |
 | 两页技术报告、脱敏 AI 开发记录 | `output/pdf/`、`docs/` |
 | HYSYS 全流程录屏 | **待完成**；本地功能视频不替代它 |
-| GitHub 发布 | **待完成**；当前本机 gh 登录凭证无效 |
+| GitHub 发布 | 仓库与 Windows 发布包见本仓库 Releases；发布状态以 GitHub 页面为准 |
 
 请阅读 [演示脚本](docs/DEMO.md) 和 [开发记录](docs/DEVELOPMENT.md)。系统只监听 `127.0.0.1`，适用于单机演示。没有实现多用户身份认证，不应直接绑定公网。
 

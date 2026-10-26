@@ -1,11 +1,4 @@
 @echo off
 cd /d "%~dp0"
-where node >nul 2>nul
-if errorlevel 1 (
-  echo Please install Node.js 22 or later.
-  pause
-  exit /b 1
-)
-echo Open http://127.0.0.1:3210 after the server starts.
-node --env-file-if-exists=.env src/server.js
-pause
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\bootstrap.ps1" %*
+if errorlevel 1 pause

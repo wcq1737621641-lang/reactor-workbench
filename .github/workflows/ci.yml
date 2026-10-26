@@ -1,0 +1,24 @@
+name: Local application checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22', '24']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test
+      - name: Windows startup preparation
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: ./scripts/bootstrap.ps1 -NoStart -Offline
