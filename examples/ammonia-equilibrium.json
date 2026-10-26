@@ -1,0 +1,24 @@
+{
+  "title": "合成氨平衡（待 HYSYS 实算）",
+  "components": ["Nitrogen", "Hydrogen", "Ammonia"],
+  "feed": {
+    "temperatureC": 400,
+    "pressureBar": 150,
+    "flow": 400,
+    "flowUnit": "kmol/h",
+    "composition": { "Nitrogen": 0.25, "Hydrogen": 0.75 }
+  },
+  "conditions": [{ "temperatureC": 450, "pressureBar": 150 }],
+  "thermalMode": "isothermal",
+  "reactions": [
+    {
+      "name": "Ammonia synthesis",
+      "stoichiometry": { "Nitrogen": -1, "Hydrogen": -3, "Ammonia": 2 },
+      "equilibriumMethod": "gibbs-energy"
+    }
+  ],
+  "equilibrium": true,
+  "unknownProducts": false,
+  "assumptions": ["假设达到化学平衡，不计催化剂活性和动力学限制。"],
+  "questions": []
+}

@@ -1,0 +1,26 @@
+{
+  "title": "乙烯加氢（必测之外的通用性验证）",
+  "components": ["Ethylene", "Hydrogen", "Ethane"],
+  "feed": {
+    "temperatureC": 120,
+    "pressureBar": 20,
+    "flow": 100,
+    "flowUnit": "kmol/h",
+    "composition": { "Ethylene": 0.4, "Hydrogen": 0.6 }
+  },
+  "conditions": [{ "temperatureC": 160, "pressureBar": 20 }],
+  "thermalMode": "isothermal",
+  "reactions": [
+    {
+      "name": "Ethylene hydrogenation",
+      "stoichiometry": { "Ethylene": -1, "Hydrogen": -1, "Ethane": 1 },
+      "baseComponent": "Ethylene",
+      "conversion": 0.8
+    }
+  ],
+  "equilibrium": false,
+  "unknownProducts": false,
+  "kinetics": null,
+  "assumptions": [],
+  "questions": []
+}

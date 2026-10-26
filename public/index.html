@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>反应器建模工作台 · Reactor Workbench</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="反应器建模工作台首页"
+        ><span class="brand-mark">R</span
+        ><span>REACTOR <b>WORKBENCH</b><small>化工反应 · 智能建模工作台</small></span></a
+      >
+      <div class="health">
+        <span class="dot"></span><span id="health">检测计算环境…</span
+        ><button id="refresh" class="quiet" aria-label="重新检测计算环境">↻</button>
+      </div>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">PROCESS ENGINEERING / 建模实验台</p>
+          <h1>从反应描述，<br />到可验证的模型。</h1>
+          <p class="lead">
+            描述进料与反应条件，审阅模型选择和假设，<br class="desktop" />再将方案交给 HYSYS 计算。
+          </p>
+        </div>
+        <div class="flow" aria-label="建模流程：进料、反应器、气液产物">
+          <span class="pipe-label feed-label">FEED</span>
+          <div class="feed-pipe"></div>
+          <div class="vessel">
+            <div class="vessel-inside"></div>
+            <span>R–100</span>
+          </div>
+          <div class="product-pipe"></div>
+          <span class="pipe-label vapour-label">VAPOUR</span>
+          <div class="liquid-pipe"></div>
+          <span class="pipe-label liquid-label">LIQUID</span><span class="energy-label">Q ↔</span>
+        </div>
+      </section>
+      <div class="workspace">
+        <section class="input panel">
+          <div class="section-title">
+            <span class="step">1</span>
+            <h2>描述反应过程</h2>
+            <span id="planner-label" class="muted">检测中</span>
+          </div>
+          <div class="examples">
+            <button data-example="reforming">甲烷蒸汽重整 <span>↗</span></button
+            ><button data-example="toluene">甲苯歧化 <span>↗</span></button
+            ><button id="json-example">其他反应 / JSON <span>↗</span></button>
+          </div>
+          <label for="request">反应需求与已知参数</label
+          ><textarea
+            id="request"
+            spellcheck="false"
+            placeholder="例如：我需要比较甲烷蒸汽重整在两个出口温度下的产物分布……"
+          ></textarea>
+          <p class="hint">请尽量提供组分、配比、流量、温度、绝对压力，以及已知转化率或平衡条件。</p>
+          <button id="analyze" class="primary">分析并生成建模方案 <span>→</span></button>
+          <p id="message" role="status" aria-live="polite"></p>
+          <div class="source-note">
+            <span>计算来源始终可见</span>
+            <p>独立计量校核与 HYSYS 实算分别标记。缺少条件时，先补充信息再运行。</p>
+          </div>
+        </section>
+        <section class="plan panel">
+          <div class="section-title">
+            <span class="step">2</span>
+            <h2>审阅建模方案</h2>
+            <span id="plan-status" class="tag">等待输入</span>
+          </div>
+          <div id="plan-empty" class="empty">
+            <div class="empty-symbol">⇌</div>
+            <h3>让模型适合反应</h3>
+            <p>分析后将在这里展示反应器类型、<br />选择理由、工况和待补充条件。</p>
+          </div>
+          <div id="plan-body" hidden>
+            <div class="reactor-heading">
+              <p class="eyebrow">推荐反应器</p>
+              <h3 id="reactor-type"></h3>
+              <p id="reason"></p>
+            </div>
+            <div id="conditions" class="conditions"></div>
+            <div id="reactions" class="reactions"></div>
+            <div id="questions-box" class="questions" hidden>
+              <h4>还需要补充</h4>
+              <ul id="questions"></ul>
+              <p>将补充信息加入左侧原始需求，再重新分析。</p>
+            </div>
+            <div id="assumptions-box">
+              <h4>建模假设</h4>
+              <ul id="assumptions"></ul>
+              <label class="accept"
+                ><input type="checkbox" id="accept" />已阅读并接受以上假设</label
+              >
+            </div>
+            <div class="actions">
+              <button id="simulate" class="primary" disabled>在 HYSYS 中运行 <span>→</span></button
+              ><button id="check" class="secondary" disabled>独立计量校核</button>
+            </div>
+            <button id="export-plan" class="text-button">下载方案 JSON ↓</button>
+            <details>
+              <summary>查看完整结构化方案</summary>
+              <pre id="plan-json"></pre>
+            </details>
+          </div>
+        </section>
+      </div>
+      <section class="results panel">
+        <div class="section-title">
+          <span class="step">3</span>
+          <h2>查看结果与证据</h2>
+          <span id="result-source" class="muted">尚未计算</span
+          ><button id="export-result" class="quiet" hidden>下载结果 JSON ↓</button>
+        </div>
+        <div id="result-body" class="result-empty">
+          完成方案审阅后运行计算。结果将显示组分流量、摩尔分数及衡算检查。
+        </div>
+      </section>
+      <footer>
+        <span>REACTOR WORKBENCH / 本地运行</span
+        ><span>温度 °C · 绝对压力 bar · 流量 kmol/h 或 kg/h</span>
+      </footer>
+    </main>
+  </body>
+</html>

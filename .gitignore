@@ -1,0 +1,12 @@
+.env
+node_modules/
+artifacts/*
+!artifacts/.gitkeep
+*.log
+desktop.png
+*.rdp
+*.zip
+rdp-*.png
+remote-screen.png
+tmp/
+.cache/

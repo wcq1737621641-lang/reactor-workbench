@@ -1,0 +1,32 @@
+{
+  "title": "甲烷燃烧产物分布（Gibbs，待 HYSYS 实算）",
+  "components": [
+    "Methane",
+    "Oxygen",
+    "Nitrogen",
+    "Water",
+    "Carbon Dioxide",
+    "Carbon Monoxide",
+    "Hydrogen"
+  ],
+  "feed": {
+    "temperatureC": 25,
+    "pressureBar": 1.01325,
+    "flow": 1052,
+    "flowUnit": "kmol/h",
+    "composition": {
+      "Methane": 0.09505703422053231,
+      "Oxygen": 0.19011406844106463,
+      "Nitrogen": 0.714828897338403
+    }
+  },
+  "conditions": [{ "temperatureC": 1000, "pressureBar": 1.01325 }],
+  "thermalMode": "isothermal",
+  "reactions": [],
+  "equilibrium": false,
+  "unknownProducts": true,
+  "assumptions": [
+    "只允许组分列表中的气体产物，不包括碳固相、自由基和 NOx；不能用于预测氮氧化物排放。"
+  ],
+  "questions": []
+}
