@@ -10,6 +10,7 @@ New-Item -ItemType Directory -Path $OutputDirectory -Force|Out-Null
 $archive=[IO.Path]::GetFullPath((Join-Path $OutputDirectory 'reactor-workbench-windows-x64.zip'))
 & git archive --format=zip ('--output='+$archive) HEAD
 if($LASTEXITCODE -ne 0){throw 'git archive failed'}
+Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $zip=[IO.Compression.ZipFile]::Open($archive,[IO.Compression.ZipArchiveMode]::Update)
 try{
@@ -19,7 +20,7 @@ try{
  [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,$license,'.runtime/LICENSE',[IO.Compression.CompressionLevel]::Optimal)|Out-Null
  $metadata=@{nodeVersion=(& $NodePath --version);nodeSHA256=(Get-FileHash -LiteralPath $NodePath -Algorithm SHA256).Hash;nodeSigner=$signature.SignerCertificate.Subject;sourceCommit=(& git rev-parse HEAD);hysysAdapter='pending';architecture='win-x64'}|ConvertTo-Json
  $entry=$zip.CreateEntry('release-metadata.json')
- $writer=New-Object IO.StreamWriter($entry.Open(),[Text.UTF8Encoding]::new($false))
+ $writer=[IO.StreamWriter]::new($entry.Open(),[Text.UTF8Encoding]::new($false))
  try{$writer.Write($metadata)}finally{$writer.Dispose()}
 }finally{$zip.Dispose()}
 Write-Output ('Release archive: '+$archive)
